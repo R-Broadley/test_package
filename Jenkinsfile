@@ -2,14 +2,10 @@ pipeline {
     agent { label 'pypackage' }
 
     stages {
-        stage('Build') {
+        stage('Tox') {
             steps {
                 echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
+								sh 'make'
             }
         }
         stage('Deploy') {

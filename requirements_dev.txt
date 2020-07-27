@@ -1,0 +1,3 @@
+# Place requirements for development here.
+changelog-cli
+tox

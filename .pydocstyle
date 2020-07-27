@@ -1,0 +1,4 @@
+[pydocstyle]
+convention = google
+add_select = D401, D404, D413
+match-dir = ^(?!([\.]|docs)).*

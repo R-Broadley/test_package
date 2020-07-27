@@ -1,0 +1,21 @@
+[tool.black]
+line-length = 88
+exclude = '/(\.eggs|\.git|\.hg|\.mypy_cache|\.nox|\.tox|\.venv|_build|buck-out|build|dist|docs)/'
+
+[tool.isort]
+multi_line_output = 3
+line_length = 88
+indent = 4
+length_sort = false
+include_trailing_comma = true
+force_sort_within_sections = true
+default_section = "FIRSTPARTY"
+skip_glob = "docs"
+
+[tool.pylint]
+	[tool.pylint.FORMAT]
+	max-line-length = "88"
+	disable = [
+		"bad-continuation",  # Conflict with black and disabled in v2.6
+		"bad-whitespace"     # Conflict with black and disabled in v2.6
+	]

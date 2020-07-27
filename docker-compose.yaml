@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  test_package:
+    build:
+      context: .
+      dockerfile: Containerfile
+
+    # Name / Tag created image
+    image: test_package
+    # Run interactive with pseudo tty
+    stdin_open: true
+    tty: true
+    # Set up environment
+    working_dir: /tmp/test_package
+    # Set user UID:GID
+    user: "$CONTAINER_USER"
+
+    volumes:
+      # Mount current users home in container for access to files
+      - type: bind
+        source: "."
+        target: /tmp/test_package
