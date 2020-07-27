@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'pypackage' }
 
     stages {
         stage('Build') {
