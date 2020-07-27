@@ -15,15 +15,20 @@ pipeline {
 		}
 	}
 	post {
-		echo ${WORKSPACE}
 		always {
-			publishHTML (target : [
-				allowMissing: false,
-				alwaysLinkToLastBuild: true,
-				keepAll: true,
-				reportDir: 'reports',
-				reportFiles: 'static_analysis/static_analysis.html'
-			])
+			script {
+				def htmlFiles
+				dir ('reports') {
+					htmlFiles = findFiles glob: '*.html'
+				}
+				publishHTML([
+					reportDir: 'reports',
+					reportFiles: htmlFiles.join(','),
+					reportName: 'Test',
+					allowMissing: false,
+					alwaysLinkToLastBuild: true,
+					keepAll: true])
+			}
 		}
 	}
 }
