@@ -14,6 +14,7 @@ def runtests(package_name):
 
     """
     pyversion = f"{version_info.major}.{version_info.minor}"
+    pyversion_slug = pyversion.replace(".", "_")
     subprocess.run(
         [
             "coverage",
@@ -26,7 +27,7 @@ def runtests(package_name):
             f"{package_name}",
             "-m",
             "pytest",
-            f"--html=reports/{pyversion}/unit_test.html",
+            f"--html=reports/{pyversion_slug}/unit_test.html",
             "unittests",
         ],
         check=True,
