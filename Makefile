@@ -3,7 +3,7 @@ SHELL := /bin/sh
 PROJECT_SLUG := "test_package"
 SOURCES := $(shell find $(PROJECT_SLUG) -name '*.py')
 UNITTESTS := $(shell find "unittests" -name '*.py')
-TOX_CONTAINER_DEPS = tox.ini image
+TOX_CONTAINER_DEPS = tox.ini
 PYVER := $(shell python3 -c "from sys import version_info; print(f'{version_info.major}.{version_info.minor}')")
 
 START_CONTAINER_CMD = ./buildscripts/start_container.sh $(PROJECT_SLUG)

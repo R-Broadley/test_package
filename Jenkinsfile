@@ -4,6 +4,7 @@ pipeline {
 	stages {
 		stage('Setup Build') {
 			steps {
+				sh 'make image'
 				sh 'make clean'
 			}
 		}
