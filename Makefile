@@ -57,7 +57,7 @@ dev: requirements_dev.txt tox.ini
 	tox -e devenv
 	source .venv/bin/activate && pip install -U pip -r $<
 
-clean:
+clean: $(TOX_CONTAINER_DEPS)
 	rm -rf .tox
 	$(START_CONTAINER_CMD) tox -e $@
 
