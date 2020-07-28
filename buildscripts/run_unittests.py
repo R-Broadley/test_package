@@ -28,7 +28,7 @@ def runtests(package_name):
             "-m",
             "pytest",
             f"--html=reports/html/{pyversion_slug}/unit_test.html",
-            f"--junitxml=reports/{pyversion_slug}_unit_test.xml",
+            f"--junitxml=reports/{pyversion_slug}_junit.xml",
             "unittests",
         ],
         check=True,
