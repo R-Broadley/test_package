@@ -2,15 +2,45 @@ pipeline {
 	agent { label 'pypackage' }
 
 	stages {
-		stage('Tox') {
+		stage('Setup Build') {
 			steps {
-				echo 'Building..'
-				sh 'make'
+				sh 'make clean'
+			}
+		}
+		stage('Lint Code') {
+			steps {
+				sh 'make lint'
+			}
+		}
+		stage('Test Python 3.6') {
+			steps {
+				sh 'make py36'
+			}
+		}
+		stage('Test Python 3.7') {
+			steps {
+				sh 'make py37'
+			}
+		}
+		stage('Test Python 3.8') {
+			steps {
+				sh 'make py38'
+			}
+		}
+		stage('Coverage Report') {
+			steps {
+				sh 'make coverage_report'
+			}
+		}
+		stage('Build Docs') {
+			steps {
+				sh 'make Docs'
 			}
 		}
 		stage('Deploy') {
 			steps {
-				echo 'Deploying....'
+				sh 'make package'
+				echo 'TODO - deploy package'
 			}
 		}
 	}

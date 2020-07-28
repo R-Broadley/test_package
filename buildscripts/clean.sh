@@ -1,6 +1,6 @@
 #!/bin/sh
 
-NOTOX="$1"
+NOTOX="${1:-none}"
 
 function rm_if_dir {
 	if [ -d "$1" ]
@@ -18,7 +18,7 @@ function rm_if_file {
 	fi
 }
 
-if [ $NOTOX -ne "--notox" ]
+if [ $NOTOX != "--notox" ]
 then
 	rm_if_dir .tox
 fi
