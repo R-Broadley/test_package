@@ -11,8 +11,7 @@ import test_package
 
 # pylint: disable=protected-access
 @pytest.mark.parametrize(
-    "module",
-    [test_package, test_package._version],
+    "module", [test_package, test_package._version],
 )
 def test_version(module):
     """Check __version__ is a valid version number.

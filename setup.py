@@ -43,9 +43,7 @@ setup(
     include_package_data=True,
     keywords=["test_package"],
     name=NAME,
-    packages=find_packages(
-        include=["test_package", "test_package.*"]
-    ),
+    packages=find_packages(include=["test_package", "test_package.*"]),
     test_suite="unittests",
     url="https://github.com/r-broadley/test_package",
     version=VERSION,
