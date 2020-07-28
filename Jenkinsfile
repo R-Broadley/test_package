@@ -41,7 +41,13 @@ pipeline {
 		stage('Publish') {
 			steps {
 				sh 'make package'
-				sh 'make publish'
+				withCredentials([usernamePassword(
+					credentialsId: 'devpi_stage',
+					passwordVariable: 'passwd',
+					usernameVariable: 'user')
+				]) {
+					sh 'buildscripts/start_container.sh -e DEVPI_USER=$user -e DEVPI_PASSWD=$passwd test_package tox -e publish'
+				}
 			}
 		}
 	}
