@@ -29,6 +29,7 @@ def runtests(package_name):
             "pytest",
             f"--html=reports/html/{pyversion_slug}/unit_test.html",
             f"--junitxml=reports/{pyversion_slug}_junit.xml",
+            f"-o junit_suite_name=pytest_{pyversion}",
             "unittests",
         ],
         check=True,
