@@ -21,11 +21,14 @@ pipeline {
 				def htmlFiles
 				dir ('reports/html') {
 					htmlFiles = findFiles glob: '*/unit_test.html'
-					htmlFiles.add('static_analysis/static_analysis.html')
-					htmlFiles.add('coverage/index.html')
 				}
+				htmlFiles = [
+					'static_analysis/static_analysis.html',
+					htmlFiles.join(','),
+					'coverage/index.html'
+				]
 				publishHTML([
-					reportDir: 'reports',
+					reportDir: 'reports/html',
 					reportFiles: htmlFiles.join(','),
 					reportName: 'Reports',
 					allowMissing: false,
