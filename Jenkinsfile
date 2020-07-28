@@ -17,6 +17,21 @@ pipeline {
 	post {
 		always {
 			junit 'reports/*junit.xml'
+			cobertura(
+				coberturaReportFile: "reports/coverage.xml",
+				onlyStable: false,
+				failNoReports: true,
+				failUnhealthy: false,
+				failUnstable: false,
+				autoUpdateHealth: true,
+				autoUpdateStability: true,
+				zoomCoverageChart: true,
+				maxNumberOfBuilds: 0,
+				lineCoverageTargets: '80, 80, 80',
+				conditionalCoverageTargets: '80, 80, 80',
+				classCoverageTargets: '80, 80, 80',
+				fileCoverageTargets: '80, 80, 80',
+			)
 			script {
 				def htmlFiles
 				dir ('reports/html') {
