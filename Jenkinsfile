@@ -1,3 +1,5 @@
+def index = 'none'
+
 pipeline {
 	agent { label 'pypackage' }
 
@@ -44,9 +46,16 @@ pipeline {
 				withCredentials([usernamePassword(
 					credentialsId: 'devpi_stage',
 					passwordVariable: 'passwd',
-					usernameVariable: 'user')
+					usernameVariable: 'username')
 				]) {
-					sh 'buildscripts/start_container.sh -e DEVPI_USER=$user -e DEVPI_PASSWD=$passwd test_package tox -e publish'
+					script {
+						if (env.TAG_NAME) {
+							index = 'prod'
+						} else {
+							index = 'stage'
+						}
+						sh "buildscripts/start_container.sh -e DEVPI_USER=$username -e DEVPI_PASSWD=$passwd -e DEVPI_INDEX=${index} test_package tox -e publish"
+					}
 				}
 			}
 		}
