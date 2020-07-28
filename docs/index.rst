@@ -5,7 +5,7 @@ Welcome to Test Package's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   test_package
+   source/api
 
 
 Indices and tables
