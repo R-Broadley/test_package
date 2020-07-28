@@ -8,17 +8,7 @@ PYVER := $(shell python3 -c "from sys import version_info; print(f'{version_info
 
 START_CONTAINER_CMD = ./buildscripts/start_container.sh $(PROJECT_SLUG)
 
-.PHONY:
-	all
-	image
-	package
-	docs
-	format
-	lint
-	shell
-	test
-	dev
-	clean
+.PHONY: all image package docs format	lint shell test	dev	clean
 
 all: test
 
