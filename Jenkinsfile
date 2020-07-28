@@ -34,7 +34,7 @@ pipeline {
 		}
 		stage('Build Docs') {
 			steps {
-				sh 'make Docs'
+				sh 'make docs'
 			}
 		}
 		stage('Deploy') {
