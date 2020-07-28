@@ -38,10 +38,10 @@ pipeline {
 				sh 'make docs'
 			}
 		}
-		stage('Deploy') {
+		stage('Publish') {
 			steps {
 				sh 'make package'
-				echo 'TODO - deploy package'
+				sh 'make publish'
 			}
 		}
 	}

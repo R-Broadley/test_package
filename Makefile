@@ -46,6 +46,9 @@ test: $(SOURCES) $(UNITTESTS) $(TOX_CONTAINER_DEPS)
 py%: $(SOURCES) $(UNITTESTS) $(TOX_CONTAINER_DEPS)
 	$(START_CONTAINER_CMD) tox -e $@
 
+publish: $(TOX_CONTAINER_DEPS)
+	$(START_CONTAINER_CMD) tox -e $@
+
 coverage_report: .coverage $(TOX_CONTAINER_DEPS)
 	$(START_CONTAINER_CMD) tox -e $@
 
