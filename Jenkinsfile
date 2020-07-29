@@ -49,7 +49,8 @@ pipeline {
 					usernameVariable: 'username')
 				]) {
 					script {
-						if (env.TAG_NAME) {
+						def ver_regex = 'v(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)'
+						if (env.TAG_NAME && env.TAG_NAME ==~ ver_regex) {
 							index = 'prod'
 						} else {
 							index = 'stage'
